@@ -1,0 +1,37 @@
+---
+title: "PANEL-E"
+---
+```{r}
+#| label: setup
+library(tidyverse)
+library(skimr)
+library(mosaic)
+library(ggformula)
+```
+
+```{r}
+#| label: My Panel E data
+E <-  read_csv(file = "data/panel_E.csv")
+E
+```
+
+```{r}
+skim(E)
+```
+
+```{r}
+glimpse(E)
+```
+
+```{r}
+E_mod <- E |> mutate(across(where(is.character),as.factor))
+glimpse(E_mod)
+```
+
+```{r}
+E_mod |> gf_bar(~`MBTI Type`, fill = ~Department)
+```
+```{r}
+#| label: Chi-square_test
+mosaic::xchisq.test(`MBTI Type` ~ Department, data = E_mod)
+```
