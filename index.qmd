@@ -7,126 +7,16 @@ format:
     toc: true
     toc-depth: 2
 ---
-#### Group 1
-#### Authors:
-
-This group collected ratings from students for four sitcoms: Friends, Modern Family, House, and The Big Bang Theory. The aim was to compare how students rated these shows and see which one came out on top. We looked at the average ratings, the spread of ratings, and how frequently different scores appeared.
-
-First, we imported the dataset and checked its structure to understand how the data was organised.
+## Setup
 
 ```{r}
-students <- read_csv("data/students.csv")
+#| label: setup
+library(tidyverse)
+library(skimr)
+library(mosaic)
+library(ggformula)
+library(vcd)
 ```
-
-```{r}
-View(students)
-names(students)
-str(students)
-```
-
-The columns were renamed to make them easier to work with. The ratings were then converted into numeric values, with blank entries treated as missing values.
-
-```{r}
-names(students) <- c("Student", "BigBang", "House",
-                     "ModernFamily", "Friends")
-```
-
-```{r}
-for (i in 2:5) {
-  students[[i]] <- trimws(as.character(students[[i]]))
-  students[[i]][students[[i]] == ""] <- NA
-  students[[i]] <- as.numeric(students[[i]])
-}
-```
-
-We checked the dataset again to make sure the columns had the correct data types.
-
-```{r}
-str(students)
-View(students)
-```
-
-To compare the four shows, we reshaped the dataset so that each row represents one student's rating for one show. Missing ratings were removed from the analysis.
-
-```{r}
-ratings <- pivot_longer(
-  students,
-  cols = c(BigBang, House, ModernFamily, Friends),
-  names_to = "Show",
-  values_to = "Rating"
-)
-
-ratings <- ratings[!is.na(ratings$Rating), ]
-```
-
-
-The first graph is a bar graph comparing the average rating of each sitcom. This gives us an overview of which show received the highest and lowest average ratings in our sample.
-
-```{r}
-averages <- aggregate(Rating ~ Show, data = ratings, FUN = mean)
-
-ggplot(averages, aes(x = Show, y = Rating)) +
-  geom_col(fill = "steelblue") +
-  geom_text(aes(label = round(Rating, 2)), vjust = -0.5) +
-  scale_y_continuous(limits = c(0, 10), breaks = 0:10) +
-  labs(
-    title = "Average Ratings of TV Shows",
-    x = "TV Show",
-    y = "Average Rating out of 10"
-  ) +
-  theme_minimal()
-```
-
-
-*Inference:* The bar graph helps us identify which show has the highest average rating and which has the lowest. However, the average alone does not tell us whether students generally agreed about a show's quality or whether their ratings varied considerably.
-
-The second graph is a box plot comparing the distribution of ratings for each show. It shows the median, the spread of ratings, and any potential outliers.
-
-```{r}
-ggplot(ratings, aes(x = Show, y = Rating)) +
-  geom_boxplot(fill = "coral") +
-  scale_y_continuous(breaks = 1:10, limits = c(1, 10)) +
-  labs(
-    title = "Distribution of Ratings by TV Show",
-    x = "TV Show",
-    y = "Rating out of 10"
-  ) +
-  theme_minimal()
-```
-
-*Inference:* The box plot helps us compare how consistent the ratings were for each show. A smaller box suggests that the middle half of the ratings were more closely grouped, while a larger box suggests more variation in opinions. The median also helps us compare the typical rating for each sitcom.
-
-The third graph consists of histograms showing the distribution of ratings for all four shows. These help us see which scores were most common and whether ratings tended towards the higher or lower end of the scale.
-
-```{r}
-ggplot(ratings, aes(x = Rating)) +
-  geom_histogram(
-    binwidth = 1,
-    boundary = 0.5,
-    fill = "darkseagreen",
-    color = "black"
-  ) +
-  facet_wrap(~ Show) +
-  scale_x_continuous(breaks = 1:10, limits = c(0.5, 10.5)) +
-  labs(
-    title = "Distribution of Sitcom Ratings",
-    x = "Rating out of 10",
-    y = "Number of Students"
-  ) +
-  theme_minimal()
-```
-
-*Inference:* The histograms show which ratings appeared most frequently for each sitcom. Ratings concentrated towards the higher end suggest that students generally liked a show, while ratings spread across the scale suggest more varied opinions. The graphs also help explain why two shows might have similar average ratings despite having different distributions.
-
-### Limitations
-
-The data only represents the students who participated in the survey, so it may not reflect the opinions of a larger population. Some students may not have watched all four shows, and missing ratings could affect the comparisons. Ratings are subjective, since everyone has different tastes and preferences. A higher average rating also does not necessarily mean that a show is objectively better than the others.
-
-### IN THIS SAMPLE:
-
-The graphs compare student ratings for Friends, Modern Family, House, and The Big Bang Theory. The average-rating graph shows which sitcom scored highest overall, while the box plot and histograms help us understand how consistent or varied the responses were.
-
-Together, the three graphs provide a snapshot of sitcom preferences within our sample. The average ratings help compare the overall scores, while the distribution graphs show whether students tended to agree or had very different opinions. These findings describe only the students who responded to our survey and cannot automatically be generalised to a wider population. Ultimately, the results give us an idea of which sitcoms this group preferred, even if the question of which show is actually the best remains up for debate.
 
 #### Group 2
 
@@ -137,15 +27,6 @@ Together, the three graphs provide a snapshot of sitcom preferences within our s
 ### Data Analysis
 
 ## Setup
-
-```{r}
-#| label: setup
-library(tidyverse)
-library(skimr)
-library(mosaic)
-library(ggformula)
-```
-
 ```{r}
 #| label: My Panel E data
 E <-  read_csv(file = "data/Panel-E_group2.csv")
@@ -193,7 +74,7 @@ After analysis of the data, we were able to find out that SMI students are, on a
 
 
 ```{r}
-myPanelEData <-  read_csv(file = "data/panel-E.csv") 
+myPanelEData <-  read_csv(file = "data/Panel-E_group5.csv") 
 ```
 ```{r}
 glimpse(myPanelEData)
