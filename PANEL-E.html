@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Madhumitha, Jayani, Veda">
 
-<title>PANEL-E</title>
+<title>Panel-E</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,21 +80,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#graphs" id="toc-graphs" class="nav-link" data-scroll-target="#graphs">Graphs</a></li>
+  <li><a href="#statistical-tests" id="toc-statistical-tests" class="nav-link" data-scroll-target="#statistical-tests">Statistical Tests</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PANEL-E</h1>
+<h1 class="title">Panel-E</h1>
+<p class="subtitle lead">I am an INTJ</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Madhumitha, Jayani, Veda </p>
+          </div>
+  </div>
     
   
     
@@ -104,6 +122,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="our-question" class="level3">
+<h3 class="anchored" data-anchor-id="our-question">Our Question</h3>
+<p>“Are SMI students more introverted than MIT students?”</p>
+</section>
+<section id="data-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="data-analysis">Data Analysis</h3>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
@@ -162,32 +189,32 @@ The following objects are masked from 'package:base':
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>E <span class="ot">&lt;-</span>  <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"data/panel_E.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>E <span class="ot">&lt;-</span>  <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"data/Panel-E_group2.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 60 Columns: 3
+<pre><code>Rows: 60 Columns: 4
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (2): Department, MBTI Type
-dbl (1): S,No
+chr (3): department, mbti-type, social-orientation
+dbl (1): sno
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>E</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 60 × 3
-   `S,No` Department `MBTI Type`
-    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      
- 1      1 SMI        ENTP       
- 2      2 SMI        INTJ       
- 3      3 SMI        INFP       
- 4      4 SMI        INTP       
- 5      5 SMI        INFP       
- 6      6 SMI        INFP       
- 7      7 SMI        ISFP       
- 8      8 SMI        INFJ       
- 9      9 SMI        INFJ       
-10     10 SMI        ENFP       
+<pre><code># A tibble: 60 × 4
+     sno department `mbti-type` `social-orientation`
+   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;               
+ 1     1 SMI        ENTP        E                   
+ 2     2 SMI        INTJ        I                   
+ 3     3 SMI        INFP        I                   
+ 4     4 SMI        INTP        I                   
+ 5     5 SMI        INFP        I                   
+ 6     6 SMI        INFP        I                   
+ 7     7 SMI        ISFP        I                   
+ 8     8 SMI        INFJ        I                   
+ 9     9 SMI        INFJ        I                   
+10    10 SMI        ENFP        E                   
 # ℹ 50 more rows</code></pre>
 </div>
 </div>
@@ -207,7 +234,7 @@ dbl (1): S,No
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Number of columns</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">4</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">_______________________</td>
@@ -219,7 +246,7 @@ dbl (1): S,No
 </tr>
 <tr class="even">
 <td style="text-align: left;">character</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">numeric</td>
@@ -238,14 +265,14 @@ dbl (1): S,No
 <p><strong>Variable type: character</strong></p>
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 13%">
-<col style="width: 19%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 8%">
+<col style="width: 24%">
 <col style="width: 12%">
-<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 11%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -261,7 +288,7 @@ dbl (1): S,No
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Department</td>
+<td style="text-align: left;">department</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">3</td>
@@ -271,13 +298,23 @@ dbl (1): S,No
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">MBTI Type</td>
+<td style="text-align: left;">mbti-type</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">15</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">social-orientation</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">0</td>
 </tr>
 </tbody>
@@ -314,7 +351,7 @@ dbl (1): S,No
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">S,No</td>
+<td style="text-align: left;">sno</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">30.5</td>
@@ -334,10 +371,11 @@ dbl (1): S,No
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(E)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 60
-Columns: 3
-$ `S,No`      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…
-$ Department  &lt;chr&gt; "SMI", "SMI", "SMI", "SMI", "SMI", "SMI", "SMI", "SMI", "S…
-$ `MBTI Type` &lt;chr&gt; "ENTP", "INTJ", "INFP", "INTP", "INFP", "INFP", "ISFP", "I…</code></pre>
+Columns: 4
+$ sno                  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15…
+$ department           &lt;chr&gt; "SMI", "SMI", "SMI", "SMI", "SMI", "SMI", "SMI", …
+$ `mbti-type`          &lt;chr&gt; "ENTP", "INTJ", "INFP", "INTP", "INFP", "INFP", "…
+$ `social-orientation` &lt;chr&gt; "E", "I", "I", "I", "I", "I", "I", "I", "I", "E",…</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -345,14 +383,18 @@ $ `MBTI Type` &lt;chr&gt; "ENTP", "INTJ", "INFP", "INTP", "INFP", "INFP", "ISFP"
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(E_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 60
-Columns: 3
-$ `S,No`      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…
-$ Department  &lt;fct&gt; SMI, SMI, SMI, SMI, SMI, SMI, SMI, SMI, SMI, SMI, SMI, MIT…
-$ `MBTI Type` &lt;fct&gt; ENTP, INTJ, INFP, INTP, INFP, INFP, ISFP, INFJ, INFJ, ENFP…</code></pre>
+Columns: 4
+$ sno                  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15…
+$ department           &lt;fct&gt; SMI, SMI, SMI, SMI, SMI, SMI, SMI, SMI, SMI, SMI,…
+$ `mbti-type`          &lt;fct&gt; ENTP, INTJ, INFP, INTP, INFP, INFP, ISFP, INFJ, I…
+$ `social-orientation` &lt;fct&gt; E, I, I, I, I, I, I, I, I, E, E, E, I, E, I, E, E…</code></pre>
 </div>
 </div>
+</section>
+<section id="graphs" class="level2">
+<h2 class="anchored" data-anchor-id="graphs">Graphs</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>E_mod <span class="sc">|&gt;</span> <span class="fu">gf_bar</span>(<span class="sc">~</span><span class="st">`</span><span class="at">MBTI Type</span><span class="st">`</span>, <span class="at">fill =</span> <span class="sc">~</span>Department)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>E_mod <span class="sc">|&gt;</span> <span class="fu">gf_bar</span>(<span class="sc">~</span><span class="st">`</span><span class="at">mbti-type</span><span class="st">`</span>, <span class="at">fill =</span> <span class="sc">~</span>department)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -362,92 +404,36 @@ $ `MBTI Type` &lt;fct&gt; ENTP, INTJ, INFP, INTP, INFP, INFP, ISFP, INFJ, INFJ, 
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">xchisq.test</span>(<span class="st">`</span><span class="at">MBTI Type</span><span class="st">`</span> <span class="sc">~</span> Department, <span class="at">data =</span> E_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in chisq.test(x, correct = correct, p = p, rescale.p = rescale.p, :
-Chi-squared approximation may be incorrect</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>E_mod <span class="sc">|&gt;</span> <span class="fu">gf_bar</span>(<span class="sc">~</span><span class="st">`</span><span class="at">social-orientation</span><span class="st">`</span>, <span class="at">fill =</span> <span class="sc">~</span>department, <span class="at">position =</span> <span class="st">"dodge"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PANEL-E_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
+</div>
+</div>
+</section>
+<section id="statistical-tests" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-tests">Statistical Tests</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">xchisq.test</span>(<span class="st">`</span><span class="at">social-orientation</span><span class="st">`</span> <span class="sc">~</span> department, <span class="at">data =</span> E_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-    Pearson's Chi-squared test
+    Pearson's Chi-squared test with Yates' continuity correction
 
 data:  x
-X-squared = 18.954, df = 14, p-value = 0.1667
+X-squared = 2.3386, df = 1, p-value = 0.1262
 
-   3        1    
- (1.93)   (2.07) 
-[0.5885] [0.5505]
-&lt; 0.767&gt; &lt;-0.742&gt;
+   16       10   
+(12.57)  (13.43) 
+ [0.68]   [0.64] 
+&lt; 0.97&gt;  &lt;-0.94&gt; 
    
-   4        1    
- (2.42)   (2.58) 
-[1.0374] [0.9704]
-&lt; 1.019&gt; &lt;-0.985&gt;
-   
-   0        4    
- (1.93)   (2.07) 
-[1.9333] [1.8086]
-&lt;-1.390&gt; &lt; 1.345&gt;
-   
-   2        1    
- (1.45)   (1.55) 
-[0.2086] [0.1952]
-&lt; 0.457&gt; &lt;-0.442&gt;
-   
-   2        3    
- (2.42)   (2.58) 
-[0.0718] [0.0672]
-&lt;-0.268&gt; &lt; 0.259&gt;
-   
-   2        0    
- (0.97)   (1.03) 
-[1.1046] [1.0333]
-&lt; 1.051&gt; &lt;-1.017&gt;
-   
-   1        0    
- (0.48)   (0.52) 
-[0.5523] [0.5167]
-&lt; 0.743&gt; &lt;-0.719&gt;
-   
-   2        3    
- (2.42)   (2.58) 
-[0.0718] [0.0672]
-&lt;-0.268&gt; &lt; 0.259&gt;
-   
-   4        4    
- (3.87)   (4.13) 
-[0.0046] [0.0043]
-&lt; 0.068&gt; &lt;-0.066&gt;
-   
-   2        4    
- (2.90)   (3.10) 
-[0.2793] [0.2613]
-&lt;-0.528&gt; &lt; 0.511&gt;
-   
-   3        3    
- (2.90)   (3.10) 
-[0.0034] [0.0032]
-&lt; 0.059&gt; &lt;-0.057&gt;
-   
-   0        2    
- (0.97)   (1.03) 
-[0.9667] [0.9043]
-&lt;-0.983&gt; &lt; 0.951&gt;
-   
-   0        2    
- (0.97)   (1.03) 
-[0.9667] [0.9043]
-&lt;-0.983&gt; &lt; 0.951&gt;
-   
-   0        2    
- (0.97)   (1.03) 
-[0.9667] [0.9043]
-&lt;-0.983&gt; &lt; 0.951&gt;
-   
-   4        1    
- (2.42)   (2.58) 
-[1.0374] [0.9704]
-&lt; 1.019&gt; &lt;-0.985&gt;
+   13       21   
+(16.43)  (17.57) 
+ [0.52]   [0.49] 
+&lt;-0.85&gt;  &lt; 0.82&gt; 
    
 key:
     observed
@@ -456,6 +442,11 @@ key:
     &lt;Pearson residual&gt;</code></pre>
 </div>
 </div>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>After analysis of the data, we were able to find out that SMI students are, on average, more introverted than MIT students.</p>
+</section>
+</section>
 
 </main>
 <!-- /main column -->
